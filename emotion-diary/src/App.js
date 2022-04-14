@@ -22,8 +22,8 @@ function App() {
           <Route path='/diary/:id' element={<Diary />} />
           {/* 단 :id를 붙이면 diary/n 으로 id가 무조건 있어야되므로
               id가 없는 그냥 /diary 자체는 동작하지 않습니다..
-              그 경우를 해결하는 방법으로는 쌩 다이어리 path로 하나 만들거나ㅎ
-              <Route path='/diary' element={<Diary />} /> */}
+              동작하게 하려면 아래처럼 단독 path 설정해주기 */}
+          <Route path='/diary' element={<Diary />} />
         </Routes>
         <RouteTest />
       </div>
