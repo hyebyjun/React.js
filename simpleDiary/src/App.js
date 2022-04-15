@@ -114,8 +114,8 @@ function App() {
             <div>How is your last? : 🍀 {goodRatio.toFixed(1)}%</div>
           </div>
           {/* <DiaryList onEdit={onEdit} onRemove={onRemove} diaryList={data} /> */}
-          <DiaryList />
           {/* [1] context로 전달하므로 컴포넌트로 전달 불필요 */}
+          <DiaryList />
         </div>
       </DiaryDispatchContext.Provider>
     </DiaryStateContext.Provider>
