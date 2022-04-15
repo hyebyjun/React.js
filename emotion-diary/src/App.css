@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+
+body {
+  background-color: #f6f6f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Gowun Dodum', sans-serif;
+  min-height: 100vh; /* 웹 스크린의 실제 100%를 다 먹겠다*/
+  margin: 0;
+}
+
+@media (min-width: 650px) {
+  .App {
+    width: 640px;
+  }
+}
+
+@media (max-width: 650px) {
+  /*650 미만일 때 90%를 차지하겠다*/
+  .App {
+    width: 90vw;
+  }
+}
+
+#root {
+  background-color: #ffffff;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.App {
+  min-height: 100vh;
+  padding: 0 20px;
+}
+
+/* MyButton */
+.MyButton {
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 12px;
+  white-space: nowrap; /* 버튼 안의 글자가 잘려서 두 줄이 되지 않도록 하는? */
+}
+
+.MyButton_default {
+  background-color: #ececec;
+  color: #000000;
+}
+
+.MyButton_positive {
+  background-color: #9abb4c;
+  color: #ececec;
+}
+
+.MyButton_negative {
+  background-color: #eba2a2;
+  color: #000000;
+}
+
+/* Header */
+header {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+header > div {
+  display: flex;
+}
+
+header .head_text {
+  width: 50%;
+  font-size: 22px;
+  justify-content: center;
+}
+
+header .head_btn_left {
+  width: 25%;
+  justify-content: start;
+}
+
+header .head_btn_right {
+  width: 25%;
+  justify-content: end;
+}
