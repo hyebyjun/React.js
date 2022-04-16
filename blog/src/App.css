@@ -1,5 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Hahmlet:wght@200;300;400;500&family=Nanum+Gothic+Coding&display=swap');
+
 .App {
   text-align: center;
+  font-family: 'Gowun Dodum', sans-serif;
+  /* font-family: 'Hahmlet', serif; */
+  /* font-family: 'Nanum Gothic Coding', monospace; */
+}
+
+.black-nav {
+  background: #2d3d5e;
+  width: 100%;
+  display: flex;
+  color: #ffffff;
+  padding: 20px;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.list {
+  margin-top: 30px;
+  text-align: left;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .App-logo {
