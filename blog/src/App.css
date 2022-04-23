@@ -10,6 +10,12 @@
   /* font-family: 'Noto Sans KR', sans-serif; */
 }
 
+.modal {
+  margin-top: 20px;
+  padding: 20px;
+  background: #eee;
+}
+
 .black-nav {
   background: #2d3d5e;
   width: 100%;
