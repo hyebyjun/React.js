@@ -1,60 +1,131 @@
+import React, { useReducer, useRef } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Home from './pages/Home';
 import New from './pages/New';
 import Edit from './pages/Edit';
 import Diary from './pages/Diary';
-import MyButton from './components/MyButton';
-import MyHeader from './components/MyHeader';
+
+// 콜백함수는 reducer라는 함수명으로 state, action 가지기
+const reducer = (state, action) => {
+  let newState = [];
+  switch (action.type) {
+    case 'INIT': {
+      return action.data;
+    }
+    case 'CREATE': {
+      const newItem = {
+        ...action.data,
+      };
+      newState = [newItem, ...state];
+      break;
+    }
+    case 'REMOVE': {
+      newState = state.filter((it) => it.id !== action.targetId);
+      break;
+    }
+    case 'EDIT': {
+      newState = state.map((it) =>
+        it.id === action.data.id ? { ...action.data } : it
+      );
+      break;
+    }
+    default:
+      return state;
+  }
+  return newState;
+};
+
+export const DiaryStateContext = React.createContext();
+export const DiaryDispatchContext = React.createContext();
+
+const dummyData = [
+  {
+    id: 1,
+    emotion: 1,
+    content: '오늘의 일기1',
+    date: 1650871524013,
+  },
+  {
+    id: 2,
+    emotion: 2,
+    content: '오늘의 일기2',
+    date: 1650871524014,
+  },
+  {
+    id: 3,
+    emotion: 3,
+    content: '오늘의 일기3',
+    date: 1650871524015,
+  },
+  {
+    id: 4,
+    emotion: 4,
+    content: '오늘의 일기4',
+    date: 1650871524016,
+  },
+  {
+    id: 5,
+    emotion: 5,
+    content: '오늘의 일기5',
+    date: 1650871524017,
+  },
+];
 
 function App() {
-  return (
-    <BrowserRouter>
-      <div className='App'>
-        <MyHeader
-          headText={'App'}
-          leftChild={
-            <MyButton text={'왼쪽 버튼'} onClick={() => alert('왼쪽 클릭')} />
-          }
-          rightChild={
-            <MyButton
-              text={'오른쪽 버튼'}
-              onClick={() => alert('오른쪽 클릭')}
-            />
-          }
-        />
-        <h2>App.js</h2>
+  const [data, dispatch] = useReducer(reducer, dummyData); // useReducer(콜백함수, 기본값)
 
-        <MyButton
-          text={'등록'}
-          type={'positive'}
-          onClick={() => {
-            alert('등록');
-          }}
-        />
-        <MyButton
-          text={'삭제'}
-          type={'negative'}
-          
-          onClick={() => {
-            alert('삭제');
-          }}
-        />
-        <MyButton
-          text={'수정'}
-          onClick={() => {
-            alert('수정');
-          }}
-        />
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/new' element={<New />} />
-          <Route path='/edit' element={<Edit />} />
-          <Route path='/diary/:id' element={<Diary />} />
-          <Route path='/diary' element={<Diary />} />
-        </Routes>
-      </div>
-    </BrowserRouter>
+  // console.log(new Date().getTime()); 더미데이터 체크용
+
+  const dataId = useRef(0);
+
+  // CREATE
+  const onCreate = (date, content, emotion) => {
+    dispatch({
+      type: 'CREATE',
+      data: {
+        id: dataId.current,
+        date: new Date(date).getTime(),
+        content,
+        emotion,
+      },
+    });
+    dataId.current += 1;
+  };
+
+  // REMOVE
+  const onRemove = (targetId) => {
+    dispatch({ type: 'REMOVE', targetId });
+  };
+
+  // EDIT
+  const onEdit = (targetId, date, content, emotion) => {
+    dispatch({
+      type: 'EDIT',
+      data: {
+        id: targetId,
+        date: new Date(date).getTime(),
+        content,
+        emotion,
+      },
+    });
+  };
+
+  return (
+    <DiaryStateContext.Provider value={data}>
+      <DiaryDispatchContext.Provider value={{ onCreate, onRemove, onEdit }}>
+        <BrowserRouter>
+          <div className='App'>
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/new' element={<New />} />
+              <Route path='/edit' element={<Edit />} />
+              <Route path='/diary/:id' element={<Diary />} />
+            </Routes>
+          </div>
+        </BrowserRouter>
+      </DiaryDispatchContext.Provider>
+    </DiaryStateContext.Provider>
   );
 }
 

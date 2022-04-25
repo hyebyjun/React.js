@@ -4,6 +4,8 @@ import Home from './pages/Home';
 import New from './pages/New';
 import Edit from './pages/Edit';
 import Diary from './pages/Diary';
+import MyButton from './components/MyButton';
+import MyHeader from './components/MyHeader';
 // 당연한 말이지만 만든 라우터테스트 컴포넌트 임포트 해야됩니다.
 import RouteTest from './components/RouteTest';
 
@@ -11,7 +13,40 @@ function App() {
   return (
     <BrowserRouter>
       <div className='App'>
+        <MyHeader
+          headText={'App'}
+          leftChild={
+            <MyButton text={'왼쪽 버튼'} onClick={() => alert('왼쪽 클릭')} />
+          }
+          rightChild={
+            <MyButton
+              text={'오른쪽 버튼'}
+              onClick={() => alert('오른쪽 클릭')}
+            />
+          }
+        />
         <h2>App.js</h2>
+
+        <MyButton
+          text={'등록'}
+          type={'positive'}
+          onClick={() => {
+            alert('등록');
+          }}
+        />
+        <MyButton
+          text={'삭제'}
+          type={'negative'}
+          onClick={() => {
+            alert('삭제');
+          }}
+        />
+        <MyButton
+          text={'수정'}
+          onClick={() => {
+            alert('수정');
+          }}
+        />
         <Routes>
           {/* Route : url 경로와 컴포넌트를 매핑해주는 컴포넌트 */}
           <Route path='/' element={<Home />} />
