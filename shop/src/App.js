@@ -73,8 +73,22 @@ function App() {
             <h4>상품명</h4>
             <p>상품설명 & 가격</p>
           </div>
-          <div className='col-md-4'>내용 2</div>
-          <div className='col-md-4'>내용 3</div>
+          <div className='col-md-4'>
+            <img
+              src='https://codingapple1.github.io/shop/shoes2.jpg'
+              width='100%'
+            />
+            <h4>상품명</h4>
+            <p>상품설명 & 가격</p>
+          </div>
+          <div className='col-md-4'>
+            <img
+              src='https://codingapple1.github.io/shop/shoes3.jpg'
+              width='100%'
+            />
+            <h4>상품명</h4>
+            <p>상품설명 & 가격</p>
+          </div>
         </div>
       </div>
     </div>
