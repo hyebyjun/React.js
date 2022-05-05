@@ -36,3 +36,33 @@
     transform: rotate(360deg);
   }
 }
+
+.Carousel {
+  margin-top: 64px;
+}
+
+.LoginPage {
+  margin-top: 64px;
+  border: 1px solid black;
+  /* width: 300px; */
+  display: flex;
+  /* justify-content: center; */
+  flex-direction: column;
+  padding: 10px;
+}
+
+.LoginPage div {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+.LoginPage button {
+  width: 150px;
+  margin: auto;
+}
+
+.BoardPage {
+  margin-top: 64px;
+  border: 1px solid red;
+}

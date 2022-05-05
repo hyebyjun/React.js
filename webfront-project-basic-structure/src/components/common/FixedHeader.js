@@ -28,10 +28,10 @@ const FixedHeader = ({ user }) => {
         <div className='logo' />
         <Menu theme='dark' mode='horizontal'>
           <Menu.Item key='0'>
-            <Link to='/dashboard'>Dashboard</Link>
+            <Link to='/board'>Board</Link>
           </Menu.Item>
           <Menu.Item key='2'>
-            <Link to='/shipment'>Shipments</Link>
+            <Link to='/signup'>SignUp</Link>
           </Menu.Item>
           <Menu.Item key='3' disabled={true}>
             Billing
