@@ -15,8 +15,8 @@ const { Header } = Layout;
 const FixedHeader = ({ user }) => {
   const navigate = useNavigate();
 
-  const clickLogin = () => {
-    navigate('/login');
+  const clickSignIn = () => {
+    navigate('/signin');
   };
 
   const clickLogout = () => {
@@ -31,7 +31,7 @@ const FixedHeader = ({ user }) => {
             <Link to='/board'>Board</Link>
           </Menu.Item>
           <Menu.Item key='2'>
-            <Link to='/signup'>SignUp</Link>
+            <Link to='/signup'>Sign Up</Link>
           </Menu.Item>
           <Menu.Item key='3' disabled={true}>
             Billing
@@ -53,8 +53,8 @@ const FixedHeader = ({ user }) => {
               </div>
             ) : (
               <div className='right'>
-                <Button to='login' onClick={clickLogin}>
-                  login
+                <Button to='SignIn' onClick={clickSignIn}>
+                  Sign In
                 </Button>
               </div>
             )}

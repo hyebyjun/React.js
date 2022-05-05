@@ -1,7 +1,8 @@
-import { useRef, useState } from 'react';
 import FixedHeader from '../components/common/FixedHeader';
+import { useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const LoginPage = () => {
+const SignInPage = () => {
   const [state, setState] = useState({
     id: '',
     pw: '',
@@ -9,6 +10,7 @@ const LoginPage = () => {
 
   const idInput = useRef();
   const pwInput = useRef();
+  const navigate = useNavigate();
 
   const handleSubmit = () => {
     if (state.id.length < 1) {
@@ -25,11 +27,8 @@ const LoginPage = () => {
 
     // submit 누르면 실행될 로그인(데이터 전달?함수) 짜야됨
     alert('로그인합니다~~');
-    // setState({
-    //   id: '',
-    //   pw: '',
-    // });
-    // 사실 얘는 로그인하고 메인페이지 넘어갈 거라 필요 없음
+    navigate('/');
+    
   };
 
   return (
@@ -58,10 +57,10 @@ const LoginPage = () => {
             }}
           />
         </div>
-        <button onClick={handleSubmit}>💻 로그인 💾</button>
+        <button onClick={handleSubmit}>Sign in</button>
       </div>
     </>
   );
 };
 
-export default LoginPage;
+export default SignInPage;
