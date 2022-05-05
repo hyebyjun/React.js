@@ -1,7 +1,27 @@
+import { useState } from 'react';
 import FixedHeader from '../components/common/FixedHeader';
 import './SignUpPage.css';
 
 const SignUpPage = () => {
+  const [state, setState] = useState({
+    name: '',
+    id: '',
+    pw1: '',
+    pw2: '',
+    mail_id: '',
+    mail_tail: '',
+  });
+
+  const handleChangeState = (event) => {
+    console.log(event.target.name);
+    console.log(event.target.value);
+
+    setState({
+      ...state,
+      [event.target.name]: event.target.value,
+    });
+  };
+
   return (
     <>
       <FixedHeader />
@@ -15,20 +35,32 @@ const SignUpPage = () => {
             <label for='name'>이름</label>
           </dt>
           <dd>
-            <input type='text' id='name' name='name' />
+            <input
+              type='text'
+              id='name'
+              name='name'
+              value={state.name}
+              onChange={(event) => {
+                setState({ ...state, name: event.target.value });
+              }}
+            />
           </dd>
         </dl>
+        
         <dl id='join_id_dl'>
           <dt>
             <label for='id'>아이디</label>
           </dt>
           <dd>
-            <input type='text' id='id' name='id' minlength='4' maxlength='16' />
             <input
-              type='button'
-              onclick='idcheck()'
-              value='중복확인'
+              type='text'
+              id='id'
+              name='id'
+              minlength='4'
+              maxlength='16'
+              value={state.id}
             />
+            <input type='button' onclick='idcheck()' value='중복확인' />
             <span id='id_title'></span>
             <span>
               4~16자리의 영문, 숫자, 특수기호(_)만 사용하실 수 있습니다. 첫
@@ -36,12 +68,19 @@ const SignUpPage = () => {
             </span>
           </dd>
         </dl>
+
         <dl id='join_pw1_dl'>
           <dt>
             <label for='pw1'>비밀번호</label>
           </dt>
           <dd>
-            <input type='text' id='pw1' name='pw1' minlength='8' />
+            <input
+              type='text'
+              id='pw1'
+              name='pw1'
+              minlength='8'
+              value={state.pw1}
+            />
             <span>영문, 숫자, 특수문자 중 2종류 조합 시 10자리 이상 입력</span>
             <span>영문, 숫자, 특수문자 모두 조합 시 8자리 이상 입력</span>
           </dd>
@@ -51,29 +90,43 @@ const SignUpPage = () => {
             <label for='pw2'>비밀번호 확인</label>
           </dt>
           <dd>
-            <input type='password' id='pw2' name='pw2' minlength='8' />
+            <input
+              type='password'
+              id='pw2'
+              name='pw2'
+              minlength='8'
+              value={state.pw2}
+            />
             <span>비밀번호를 다시 한번 입력해 주세요.</span>
           </dd>
         </dl>
+
         <dl id='join_mail_dl'>
           <dt>
             <label for='mail_id'>이메일</label>
           </dt>
           <dd>
-            <input type='text' id='mail_id' name='mail_id' />
+            <input
+              type='text'
+              id='mail_id'
+              name='mail_id'
+              value={state.mail_id}
+            />
             <span>@</span>
-            <input type='text' id='main_tail' name='mail_tail' />
-            <select>
-              <option selected>직접입력</option>
-              <option>지메일</option>
-              <option>네이버</option>
-              <option>네이트</option>
-              <option>핫메일</option>
-              <option>파란</option>
-              <option>엠팔</option>
-              <option>야후</option>
-              <option>드림위즈</option>
-              <option>한메일(다음)</option>
+            {/* <input
+              type='text'
+              id='main_tail'
+              name='mail_tail'
+              value={state.mail_tail}
+            /> */}
+            <select
+              name='mail_tail'
+              value={state.mail_tail}
+              onChange={handleChangeState}
+            >
+              <option value={'gmail.com'}>gmail.com</option>
+              <option value={'naver.com'}>naver.com</option>
+              <option value={'kakao.com'}>kakao.com</option>
             </select>
           </dd>
         </dl>

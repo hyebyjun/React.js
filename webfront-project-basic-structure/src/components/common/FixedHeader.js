@@ -28,7 +28,7 @@ const FixedHeader = ({ user }) => {
         <div className='logo' />
         <Menu theme='dark' mode='horizontal'>
           <Menu.Item key='0'>
-            <Link to='/board'>Board</Link>
+            <Link to='/boardlist'>Board</Link>
           </Menu.Item>
           <Menu.Item key='2'>
             <Link to='/signup'>Sign Up</Link>
