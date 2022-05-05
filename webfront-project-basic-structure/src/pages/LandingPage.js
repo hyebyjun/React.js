@@ -1,4 +1,4 @@
-import FixedHeader from "../components/common/FixedHeader";
+import FixedHeader from '../components/common/FixedHeader';
 const LandingPage = () => {
   return (
     <>
