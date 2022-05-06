@@ -1,6 +1,6 @@
 import FixedHeader from '../components/common/FixedHeader';
 
-const BoardListPage = () => {
+const BoardList = () => {
   return (
     <>
       <FixedHeader />
@@ -33,4 +33,4 @@ const BoardListPage = () => {
   );
 };
 
-export default BoardListPage;
+export default BoardList;

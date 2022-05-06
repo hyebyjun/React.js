@@ -19,7 +19,7 @@ const FixedHeader = ({ user }) => {
     navigate('/signin');
   };
 
-  const clickLogout = () => {
+  const clickSignOut = () => {
     navigate('/');
   };
   return (
@@ -28,6 +28,9 @@ const FixedHeader = ({ user }) => {
         <div className='logo' />
         <Menu theme='dark' mode='horizontal'>
           <Menu.Item key='0'>
+            <Link to='/'>Main</Link>
+          </Menu.Item>
+          <Menu.Item key='1'>
             <Link to='/boardlist'>Board</Link>
           </Menu.Item>
           <Menu.Item key='2'>
@@ -47,8 +50,8 @@ const FixedHeader = ({ user }) => {
           <Menu.Item key='10'>
             {user ? (
               <div className='right'>
-                <Button to='Logout' onClick={clickLogout}>
-                  Logout
+                <Button to='SignOut' onClick={clickSignOut}>
+                  Sign Out
                 </Button>
               </div>
             ) : (

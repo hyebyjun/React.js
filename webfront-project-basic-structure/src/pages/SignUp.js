@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import FixedHeader from '../components/common/FixedHeader';
-import './SignUpPage.css';
+import './SignUp.css';
 
-const SignUpPage = () => {
+const SignUp = () => {
   const [state, setState] = useState({
     name: '',
     id: '',
@@ -13,8 +13,8 @@ const SignUpPage = () => {
   });
 
   const handleChangeState = (event) => {
-    console.log(event.target.name);
-    console.log(event.target.value);
+    console.log(`target : ${event.target.name}`);
+    console.log(`입력된 아이디 : ${state.mail_id}@${event.target.value}`);
 
     setState({
       ...state,
@@ -46,7 +46,7 @@ const SignUpPage = () => {
             />
           </dd>
         </dl>
-        
+
         <dl id='join_id_dl'>
           <dt>
             <label for='id'>아이디</label>
@@ -59,6 +59,9 @@ const SignUpPage = () => {
               minlength='4'
               maxlength='16'
               value={state.id}
+              onChange={(event) => {
+                setState({ ...state, id: event.target.value });
+              }}
             />
             <input type='button' onclick='idcheck()' value='중복확인' />
             <span id='id_title'></span>
@@ -80,6 +83,9 @@ const SignUpPage = () => {
               name='pw1'
               minlength='8'
               value={state.pw1}
+              onChange={(event) => {
+                setState({ ...state, pw1: event.target.value });
+              }}
             />
             <span>영문, 숫자, 특수문자 중 2종류 조합 시 10자리 이상 입력</span>
             <span>영문, 숫자, 특수문자 모두 조합 시 8자리 이상 입력</span>
@@ -96,6 +102,9 @@ const SignUpPage = () => {
               name='pw2'
               minlength='8'
               value={state.pw2}
+              onChange={(event) => {
+                setState({ ...state, pw2: event.target.value });
+              }}
             />
             <span>비밀번호를 다시 한번 입력해 주세요.</span>
           </dd>
@@ -111,6 +120,9 @@ const SignUpPage = () => {
               id='mail_id'
               name='mail_id'
               value={state.mail_id}
+              onChange={(event) => {
+                setState({ ...state, mail_id: event.target.value });
+              }}
             />
             <span>@</span>
             {/* <input
@@ -272,4 +284,4 @@ const SignUpPage = () => {
   );
 };
 
-export default SignUpPage;
+export default SignUp;

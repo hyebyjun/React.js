@@ -3,7 +3,7 @@ import { Carousel } from 'antd';
 
 const LandingPage = () => {
   const contentStyle = {
-    height: '600px',
+    height: '550px',
     color: '#fff',
     lineHeight: '500px',
     textAlign: 'center',

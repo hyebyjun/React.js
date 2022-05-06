@@ -14,13 +14,13 @@ const SignInPage = () => {
 
   const handleSubmit = () => {
     if (state.id.length < 1) {
-      alert('조건 미충족');
+      alert('아이디는 공백일 수 없습니다.');
       idInput.current.focus();
       return;
     }
 
-    if (state.pw.length < 5) {
-      alert('조건 미충족');
+    if (state.pw.length < 1) {
+      alert('비밀번호는 공백일 수 없습니다.');
       pwInput.current.focus();
       return;
     }
