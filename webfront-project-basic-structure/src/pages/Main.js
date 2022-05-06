@@ -1,7 +1,7 @@
 import FixedHeader from '../components/common/FixedHeader';
 import { Carousel } from 'antd';
 
-const LandingPage = () => {
+const Main = () => {
   const contentStyle = {
     height: '550px',
     color: '#fff',
@@ -33,4 +33,4 @@ const LandingPage = () => {
   );
 };
 
-export default LandingPage;
+export default Main;
