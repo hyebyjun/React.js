@@ -22,6 +22,7 @@ const FixedHeader = ({ user }) => {
   const clickSignOut = () => {
     navigate('/');
   };
+  
   return (
     <Layout>
       <Header style={{ position: 'fixed', zIndex: 4, width: '100%' }}>
