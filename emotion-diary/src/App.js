@@ -43,31 +43,31 @@ const dummyData = [
   {
     id: 1,
     emotion: 1,
-    content: '오늘의 일기1',
+    content: '오늘의 일기 1',
     date: 1650871524013,
   },
   {
     id: 2,
     emotion: 2,
-    content: '오늘의 일기2',
+    content: '오늘의 일기 2',
     date: 1650871524014,
   },
   {
     id: 3,
     emotion: 3,
-    content: '오늘의 일기3',
+    content: '오늘의 일기 3',
     date: 1650871524015,
   },
   {
     id: 4,
     emotion: 4,
-    content: '오늘의 일기4',
+    content: '오늘의 일기 4',
     date: 1650871524016,
   },
   {
     id: 5,
     emotion: 5,
-    content: '오늘의 일기5',
+    content: '오늘의 일기 5',
     date: 1650871524017,
   },
 ];

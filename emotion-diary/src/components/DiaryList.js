@@ -1,8 +1,16 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import MyButton from './MyButton';
 
 const sortOptionList = [
   { value: 'lastest', name: '최신순' },
   { value: 'oldest', name: '오래된 순' },
+];
+
+const filterOptionList = [
+  { value: 'all', name: '모두 다' },
+  { value: 'good', name: '좋은 날' },
+  { value: 'bad', name: '안 좋은 날' },
 ];
 
 const ControlMenu = ({ value, onChange, optionList }) => {
@@ -11,6 +19,7 @@ const ControlMenu = ({ value, onChange, optionList }) => {
     // onChange : 셀렉트가 선택하는 게 변화했을 때 바꾸는 함수
     // optionList : 셀렉트 태그 속에 들어갈 옵션들
     <select
+      className='ControlMenu'
       value={value}
       onChange={(e) => {
         onChange(e.target.value);
@@ -26,8 +35,13 @@ const ControlMenu = ({ value, onChange, optionList }) => {
 };
 
 const DiaryList = ({ diaryList }) => {
+  const navigate = useNavigate();
+
   // 정렬 기준을 저장할 state
   const [sortType, setSortType] = useState('lastest');
+
+  // 감정 구분해서 필터해줄 상태정보함?ㅎ
+  const [filter, setFilter] = useState('all');
 
   // 정렬 기능을 선택하면 리스트를 기준대로 실제 리스트업해주는 기능
   const getProcessedDiaryList = () => {
@@ -42,19 +56,51 @@ const DiaryList = ({ diaryList }) => {
 
     // 실제 리스트 배열에 sort 적용하면 원본 건드리니까, 원본 건들기 지양 ㅇㅇ
     const copyList = JSON.parse(JSON.stringify(diaryList)); // 이럴 때 깊은 복사 활용해주기
-    const sortedList = copyList.sort(compare);
+
+    const filterCallBack = (it) => {
+      if (filter === 'good') {
+        return parseInt(it.emotion) >= 3;
+      } else {
+        return parseInt(it.emotion) < 3;
+      }
+    };
+
+    const filteredList =
+      filter === 'all' ? copyList : copyList.filter((it) => filterCallBack(it));
+
+    // const sortedList = copyList.sort(compare);
+    // 원래 all item이었지만 좋은날/안좋은날 구분하니까 copyList에서 filteredList로 변경
+    const sortedList = filteredList.sort(compare);
     // 정렬하고자 하는 데이터가 현재 배열이므로? 비교함수 만들어준다고? [1]
 
     return sortedList;
   };
 
   return (
-    <div>
-      <ControlMenu
-        value={sortType}
-        onChange={setSortType}
-        optionList={sortOptionList}
-      />
+    <div className='DiaryList'>
+      <div className='menu_wrapper'>
+        <div className='left_col'>
+          <ControlMenu
+            value={sortType}
+            onChange={setSortType}
+            optionList={sortOptionList}
+          />
+
+          <ControlMenu
+            value={filter}
+            onChange={setFilter}
+            optionList={filterOptionList}
+          />
+        </div>
+        <div className='right_col'>
+          <MyButton
+            type={'positive'}
+            text={'일기 작성'}
+            onClick={() => navigate('/new')}
+          />
+        </div>
+      </div>
+
       {getProcessedDiaryList().map((it) => (
         <div key={it.id}>{it.content}</div>
         // 키의 의미, 필요성 복습필요합니다.
