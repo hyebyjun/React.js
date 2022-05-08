@@ -45,21 +45,18 @@
   margin-top: 64px;
 }
 
+/* 로그인 페이지 */
 .SignIn {
-  border: 1px solid black;
-  /* width: 300px; */
+  /* border: 1px solid black; */
   display: flex;
-  /* justify-content: center; */
   flex-direction: column;
   padding: 10px;
 }
-
 .SignIn div {
   display: flex;
   justify-content: center;
   margin-bottom: 5px;
 }
-
 .SignIn input {
   border: none;
   border-radius: 5px;
@@ -68,56 +65,75 @@
   height: 35px;
   display: flex;
 }
-
 .SignIn button {
   width: 100px;
   margin: 5px auto 0;
 }
 
-.BoardList {
-  border: 1px solid red;
+
+/* 버튼 컴포넌트 */
+button {
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  padding: 5px 10px;
+}
+.MyButton {
+  display: flex;
+  justify-content: center;
 }
 
+
+/* 기본 보드 테이블 */
 table {
   width: 96%;
   margin: 20px auto 0 auto;
   line-height: 40px;
 }
-
-/* .table-notice {
-  background-color: #e56e00;
-  color: white;
-  padding-left: 10px;
-  padding-right: 10px;
-} */
-
-.table-title {
-  text-align: left;
-}
-
 table {
   border-collapse: collapse;
 }
-
 th {
   border: 1px solid silver;
-  border-top: 2px solid black;
+  /* border-top: 2px solid black; */
 }
-
 td {
   border: 1px solid silver;
 }
-
 th,
 td {
   border-left: hidden;
   border-right: hidden;
 }
 
+
+/* 게시글 목록 */
+.BoardList {
+  /* border: 1px solid red; */
+  text-align: center;
+}
+.BoardList .MyButton {
+  display: flex;
+  justify-content: end;
+  margin-right: 20px;
+}
+.BoardTop {
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* border: 1px solid blue; */
+}
+.BoardTop span {
+  margin-left: 20px;
+  /* border: 1px solid green; */
+}
+
+
+/* 글쓰기 페이지 */
 .BoardCreate {
   padding-top: 10px;
 }
-
 .BoardCreate input,
 textarea {
   border: none;
@@ -127,49 +143,22 @@ textarea {
   display: flex;
   padding-left: 10px;
 }
-
-button {
-  cursor: pointer;
-  border-radius: 5px;
-  border: none;
-  padding: 5px 10px;
-}
-
-.MyButton {
-  display: flex;
-  justify-content: center;
-}
-
-.BoardList .MyButton {
-  display: flex;
-  justify-content: end;
-  margin-right: 20px;
-}
-
 .BoardCreate .MyButton {
   margin-top: 15px;
 }
-
-.BoardTop {
-  margin-top: 50px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border: 1px solid blue;
-}
-
-.BoardTop span {
-  margin-left: 20px;
-  border: 1px solid green;
-}
-
 .BoardBottom {
   display: flex;
   justify-content: center;
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   margin: 10px;
 }
-
 .BoardBottom .MyButton {
   margin: 5px;
+}
+
+
+/* 게시글 상세페이지 */
+.BoardDetail {
+  /* border: 1px solid red; */
+  padding-top: 10px;
 }

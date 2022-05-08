@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import FixedHeader from '../components/common/FixedHeader';
 import MyButton from '../components/common/MyButton';
 
-const BoardCreate = () => {
+const BoardEditor = ({ onCreate }) => {
   const navigate = useNavigate();
 
   const [state, setState] = useState({
@@ -12,17 +12,38 @@ const BoardCreate = () => {
     content: '',
   });
 
-  const authorInput = useRef();
   const titleInput = useRef();
+  const authorInput = useRef();
   const contentInput = useRef();
+
+  // const [data, setData] = useState([]);
+  // const dataId = useRef(0);
+
+  // const onCreate = (author, content, title) => {
+  //   const created_date = new Date().getTime();
+  //   const newItem = {
+  //     author,
+  //     content,
+  //     title,
+  //     created_date,
+  //     id: dataId.current,
+  //   };
+  //   dataId.current += 1;
+
+  //   setData([newItem, ...data]);
+  //   console.log(data);
+  //   localStorage.setItem('board', JSON.stringify(data));
+  // };
 
   const handleSubmit = () => {
     if (state.author.length < 1) {
       authorInput.current.focus();
+      alert('공란은 안돼.');
       return;
     }
     if (state.title.length < 1) {
       titleInput.current.focus();
+      alert('왜 알림이 안 뜰까요..')
       return;
     }
     if (state.content.length < 1) {
@@ -30,14 +51,14 @@ const BoardCreate = () => {
       return;
     }
 
-    // onCreate(state.author, state.title, state.content);
+    onCreate(state.author, state.content, state.title);
     alert('게시글이 등록되었습니다.');
-    navigate('/boardlist');
-    // setState({
-    //   author: '',
-    //   title: '',
-    //   content: '',
-    // }); 페이지 이동할 거라 필요 없음..
+    // navigate('/boardlist');
+    setState({
+      author: '',
+      title: '',
+      content: '',
+    });
   };
 
   return (
@@ -53,6 +74,7 @@ const BoardCreate = () => {
                 value={state.title}
                 onChange={(e) => {
                   setState({ ...state, title: e.target.value });
+                  console.log(`title : ${state.title}`);
                 }}
               />
             </td>
@@ -70,6 +92,7 @@ const BoardCreate = () => {
                 name='author'
                 value={state.author}
                 onChange={(e) => {
+                  console.log(`author : ${state.author}`);
                   setState({ ...state, author: e.target.value });
                 }}
               />
@@ -85,6 +108,7 @@ const BoardCreate = () => {
                 value={state.content}
                 onChange={(e) => {
                   setState({ ...state, content: e.target.value });
+                  console.log(`content : ${state.content}`);
                 }}
               />
             </td>
@@ -98,11 +122,12 @@ const BoardCreate = () => {
         </table>
         <div className='BoardBottom'>
           <MyButton onClick={handleSubmit} text={'게시'} />
-          <MyButton onClick={() => {}} text={'취소'} />
+          <MyButton onClick={() => navigate('/boardlist')} text={'취소'} />
+          {/* <MyButton onClick={navigate('/boardlist')} text={'취소'} /> */}
         </div>
       </div>
     </>
   );
 };
 
-export default BoardCreate;
+export default BoardEditor;
