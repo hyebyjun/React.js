@@ -4,8 +4,6 @@ import FixedHeader from '../components/common/FixedHeader';
 import MyButton from '../components/common/MyButton';
 
 const BoardEditor = ({ onCreate }) => {
-  const navigate = useNavigate();
-
   const [state, setState] = useState({
     author: '',
     title: '',
@@ -15,6 +13,8 @@ const BoardEditor = ({ onCreate }) => {
   const titleInput = useRef();
   const authorInput = useRef();
   const contentInput = useRef();
+
+  const navigate = useNavigate();
 
   // const [data, setData] = useState([]);
   // const dataId = useRef(0);
@@ -36,14 +36,14 @@ const BoardEditor = ({ onCreate }) => {
   // };
 
   const handleSubmit = () => {
-    if (state.author.length < 1) {
-      authorInput.current.focus();
-      alert('공란은 안돼.');
+    if (state.title.length < 1) {
+      alert('왜 알림이 안 뜰까요..');
+      titleInput.current.focus();
       return;
     }
-    if (state.title.length < 1) {
-      titleInput.current.focus();
-      alert('왜 알림이 안 뜰까요..')
+    if (state.author.length < 1) {
+      alert('공란은 안돼.');
+      authorInput.current.focus();
       return;
     }
     if (state.content.length < 1) {
@@ -52,6 +52,7 @@ const BoardEditor = ({ onCreate }) => {
     }
 
     onCreate(state.author, state.content, state.title);
+    // console.log(state);
     alert('게시글이 등록되었습니다.');
     // navigate('/boardlist');
     setState({
@@ -92,8 +93,8 @@ const BoardEditor = ({ onCreate }) => {
                 name='author'
                 value={state.author}
                 onChange={(e) => {
-                  console.log(`author : ${state.author}`);
                   setState({ ...state, author: e.target.value });
+                  console.log(`author : ${state.author}`);
                 }}
               />
             </td>

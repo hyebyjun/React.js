@@ -55,6 +55,7 @@ function App() {
     localStorage.setItem('board', JSON.stringify(data));
   };
 
+  
   return (
     <Routes>
       <Route path='/' element={<Main />} />

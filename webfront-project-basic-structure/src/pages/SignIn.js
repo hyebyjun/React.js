@@ -19,7 +19,6 @@ const SignInPage = () => {
       idInput.current.focus();
       return;
     }
-
     if (state.pw.length < 1) {
       alert('비밀번호는 공백일 수 없습니다.');
       pwInput.current.focus();
@@ -27,6 +26,7 @@ const SignInPage = () => {
     }
 
     // submit 누르면 실행될 로그인(데이터 전달?함수) 짜야됨
+    console.log(state);
     alert('로그인합니다~~');
     navigate('/');
   };
