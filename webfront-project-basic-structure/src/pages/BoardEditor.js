@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import FixedHeader from '../components/common/FixedHeader';
 import MyButton from '../components/common/MyButton';
 
-const BoardEditor = ({ onCreate }) => {
+const BoardEditor = ({ onCreate, boardList }) => {
   const [state, setState] = useState({
     author: '',
     title: '',
@@ -15,25 +15,6 @@ const BoardEditor = ({ onCreate }) => {
   const contentInput = useRef();
 
   const navigate = useNavigate();
-
-  // const [data, setData] = useState([]);
-  // const dataId = useRef(0);
-
-  // const onCreate = (author, content, title) => {
-  //   const created_date = new Date().getTime();
-  //   const newItem = {
-  //     author,
-  //     content,
-  //     title,
-  //     created_date,
-  //     id: dataId.current,
-  //   };
-  //   dataId.current += 1;
-
-  //   setData([newItem, ...data]);
-  //   console.log(data);
-  //   localStorage.setItem('board', JSON.stringify(data));
-  // };
 
   const handleSubmit = () => {
     if (state.author.length < 1) {
@@ -53,7 +34,7 @@ const BoardEditor = ({ onCreate }) => {
     }
 
     onCreate(state.author, state.content, state.title);
-    // console.log(state);
+    console.log(state);
     alert('게시글이 등록되었습니다.');
     // navigate('/boardlist');
     setState({
@@ -61,6 +42,7 @@ const BoardEditor = ({ onCreate }) => {
       title: '',
       content: '',
     });
+    console.log({boardList});
   };
 
   return (
@@ -76,7 +58,8 @@ const BoardEditor = ({ onCreate }) => {
                 value={state.title}
                 onChange={(e) => {
                   setState({ ...state, title: e.target.value });
-                  console.log(`title : ${state.title}`);
+                  console.log(`title : ${e.target.value}`);
+                  // console.log(`title : ${state.title}`);
                 }}
               />
             </td>
@@ -95,7 +78,7 @@ const BoardEditor = ({ onCreate }) => {
                 value={state.author}
                 onChange={(e) => {
                   setState({ ...state, author: e.target.value });
-                  console.log(`author : ${state.author}`);
+                  console.log(`author : ${e.target.value}`);
                 }}
               />
             </td>
@@ -110,7 +93,7 @@ const BoardEditor = ({ onCreate }) => {
                 value={state.content}
                 onChange={(e) => {
                   setState({ ...state, content: e.target.value });
-                  console.log(`content : ${state.content}`);
+                  console.log(`content : ${e.target.value}`);
                 }}
               />
             </td>

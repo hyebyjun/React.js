@@ -9,7 +9,6 @@ import BoardEditor from './pages/BoardEditor';
 import BoardDetail from './pages/BoardDetail';
 
 function App() {
-
   // 불러온 데이터든 작성한 데이터든 담길 state
   const [data, setData] = useState([]);
   const dataId = useRef(0);
@@ -51,18 +50,20 @@ function App() {
     dataId.current += 1;
 
     setData([newItem, ...data]);
-    console.log(data); // []부터 나오냐..
+    // console.log(data);
     localStorage.setItem('board', JSON.stringify(data));
   };
 
-  
   return (
     <Routes>
       <Route path='/' element={<Main />} />
       <Route path='/signin' element={<SignIn />} />
       <Route path='/signup' element={<SignUp />} />
       <Route path='/boardlist' element={<BoardList boardList={data} />} />
-      <Route path='/boardeditor' element={<BoardEditor onCreate={onCreate}/>} />
+      <Route
+        path='/boardeditor'
+        element={<BoardEditor onCreate={onCreate} boardList={data}/>}
+      />
       <Route path='/boarddetail/:id' element={<BoardDetail />} />
     </Routes>
   );
