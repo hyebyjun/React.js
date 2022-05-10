@@ -44,37 +44,37 @@ const dummyData = [
     id: 1,
     emotion: 1,
     content: '오늘의 일기 1',
-    date: 1650871524013,
+    date: 1652054400000,
   },
   {
     id: 2,
     emotion: 2,
     content: '오늘의 일기 2',
-    date: 1650871524014,
+    date: 1652054400000,
   },
   {
     id: 3,
     emotion: 3,
     content: '오늘의 일기 3',
-    date: 1650871524015,
+    date: 1652054400000,
   },
   {
     id: 4,
     emotion: 4,
     content: '오늘의 일기 4',
-    date: 1650871524016,
+    date: 1652054400000,
   },
   {
     id: 5,
     emotion: 5,
     content: '오늘의 일기 5',
-    date: 1650871524017,
+    date: 1652054400000,
   },
 ];
 
 function App() {
-  const [data, dispatch] = useReducer(reducer, dummyData); // useReducer(콜백함수, 기본값)
-
+  const [data, dispatch] = useReducer(reducer, dummyData);
+  // useReducer(콜백함수, 기본값)
   // console.log(new Date().getTime()); 더미데이터 체크용
 
   const dataId = useRef(0);
@@ -119,7 +119,7 @@ function App() {
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/new' element={<New />} />
-              <Route path='/edit' element={<Edit />} />
+              <Route path='/edit/:id' element={<Edit />} />
               <Route path='/diary/:id' element={<Diary />} />
             </Routes>
           </div>

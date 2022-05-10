@@ -51,15 +51,9 @@ const BoardList = ({ boardList }) => {
               <td>{it.title}</td>
               <td>{it.author}</td>
               <td>{new Date(it.created_date).toLocaleString()}</td>
-              {/* <BoardItem
-                key={it.id}
-                id={it.id}
-                title={it.title}
-                author={it.author}
-                created_date={it.created_date}
-              /> */}
             </tr>
           ))}
+          
         </table>
       </div>
     </>
