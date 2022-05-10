@@ -36,17 +36,18 @@ const BoardEditor = ({ onCreate }) => {
   // };
 
   const handleSubmit = () => {
-    if (state.title.length < 1) {
-      alert('왜 알림이 안 뜰까요..');
-      titleInput.current.focus();
-      return;
-    }
     if (state.author.length < 1) {
-      alert('공란은 안돼.');
+      alert('작성자를 입력해주세요.');
       authorInput.current.focus();
       return;
     }
+    if (state.title.length < 1) {
+      alert('제목을 입력해주세요.')
+      titleInput.current.focus();
+      return;
+    }
     if (state.content.length < 1) {
+      alert('내용을 입력해주세요.')
       contentInput.current.focus();
       return;
     }
