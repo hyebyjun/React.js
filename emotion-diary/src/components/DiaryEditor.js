@@ -6,6 +6,8 @@ import MyHeader from './MyHeader';
 import MyButton from './MyButton';
 import EmotionItem from './EmotionItem';
 
+// const env = process.env;
+//   env.PUBLIC_URL = env.PUBLIC_URL || '';
 const emotionList = [
   {
     emotion_id: 1,
@@ -43,7 +45,6 @@ const DiaryEditor = ({ isEdit, originData }) => {
   const contentRef = useRef();
   const [content, setContent] = useState('');
   const [emotion, setEmotion] = useState(3);
-
   const [date, setDate] = useState(getStringDate(new Date()));
   const navigate = useNavigate();
 

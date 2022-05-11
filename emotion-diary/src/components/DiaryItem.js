@@ -2,9 +2,11 @@ import MyButton from './MyButton';
 import { useNavigate } from 'react-router-dom';
 
 const DiaryItem = ({ id, emotion, content, date }) => {
+  // const env = process.env;
+  // env.PUBLIC_URL = env.PUBLIC_URL || '';
 
   const strDate = new Date(parseInt(date)).toLocaleDateString();
-  
+
   const navigate = useNavigate();
   const goDetail = () => {
     navigate(`/diary/${id}`);
