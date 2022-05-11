@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useRef, useState } from 'react';
-import { DiaryDispatchContext } from './../App.js';
+import { DiaryDispatchContext } from '../App.js';
 
 import MyHeader from './MyHeader';
 import MyButton from './MyButton';
@@ -48,7 +48,7 @@ const DiaryEditor = ({ isEdit, originData }) => {
   const navigate = useNavigate();
 
   // [2] 아래 handleSubmit을 위한.. onCreate땡겨오기
-  const { onCreate, onEdit } = useContext(DiaryDispatchContext);
+  const { onCreate } = useContext(DiaryDispatchContext);
 
   const handleClickEmote = (emotion) => {
     setEmotion(emotion);
@@ -58,39 +58,20 @@ const DiaryEditor = ({ isEdit, originData }) => {
     if (content.length < 1) {
       contentRef.current.focus();
       return;
-    }
-
-    if (
-      window.confirm(
-        isEdit ? '일기를 수정하시겠습니까?' : '새로운 일기를 작성하나요?'
-      )
-    ) {
-      if (!isEdit) {
-        // 수정중이 아닐 때 = 새일기 작성일 때
-        onCreate(date, content, emotion);
-      } else {
-        onEdit(originData.id, date, content, emotion);
-      }
-    }
-    // onCreate(date, content, emotion); // [1] 그게 아니면 onCreate 함수를 실행해야함.
-    navigate('/', { replace: true }); // [3] 그냥 돌아가기 말고, 뒤로 가기를 못하게? ??
+    } // 그게 아니면 onCreate 함수를 실행해야함. [1]
+    // 그러려면 onCreate 짰던 App.js로부터 갖고와야됨..
+    // 또 그러려면... 프롭 타고타고 말고 깔끔하게 갖고오려고 해둔 context를.. 쓴다..
+    onCreate(date, content, emotion);
+    navigate('/', { replace: true }); // 그냥 돌아가기 말고, 뒤로 가기를 못하게? ??
   };
 
-  useEffect(() => {
-    if (isEdit) {
-      // Edit.js로부터 받아온 isEdit={true}면,
-      // 4번 일기 수정 url이면 4번 일기 데이터가 나와야하므로
-      setDate(getStringDate(new Date(parseInt(originData.date))));
-      setEmotion(originData.emotion);
-      setContent(originData.content);
-    }
-  }, [isEdit, originData]);
+  // console.log(getStringDate(new Date()));
+  // 잘 나오는 거 확인했으니까 ㅎㅎ
 
   return (
     <div className='DiaryEditor'>
       <MyHeader
-        headText={isEdit ? '일기 수정' : '새로운 일기'}
-        // headText={isEdit ? originData.id+'번 일기 수정하기' : '새로운 일기'}
+        headText={'새로운 일기'}
         leftChild={<MyButton text={'<'} onClick={() => navigate(-1)} />}
       />
       <div>
