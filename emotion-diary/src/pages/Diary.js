@@ -31,7 +31,7 @@ const Diary = () => {
   }, [id, diaryList]);
 
   if (!data) {
-    return <div className='DiaryPage'>로딩중입니다...</div>;
+    return <div className='DiaryPage'>Not Found 없지롱</div>;
   } else {
     const curEmotionData = emotionList.find(
       (it) => parseInt(it.emotion_id) === parseInt(data.emotion)
@@ -41,7 +41,10 @@ const Diary = () => {
       <div className='DiaryPage'>
         {/* 날짜 양식도 재사용이 은근 있으니 컴포넌트화 해서 util폴더에 세팅 + 임포트 */}
         <MyHeader
-          headText={`${getStringDate(new Date(data.date))} 일기`}
+          // headText={`${getStringDate(new Date(data.date))} 일기`}
+          headText={`${new Date(data.date).getFullYear()}년 ${
+            new Date(data.date).getMonth() + 1
+          }월 ${new Date(data.date).getDate()}일`}
           leftChild={<MyButton text={'<'} onClick={() => navigate(-1)} />}
           rightChild={
             <MyButton
