@@ -170,6 +170,7 @@ header .head_btn_right {
 
 .DiaryItem .diary_content_preview {
   font-size: 16px;
+  margin-right: 15px;
 }
 
 .DiaryItem .btn_wrapper {
@@ -323,8 +324,8 @@ header .head_btn_right {
   min-height: 350px;
   background-color: #f6f6f6;
   border-radius: 10px;
-  word-break: keep-all;
-  overflow-wrap: break-word; /* 줄바꿈 */
+  /* word-break: keep-all; */
+  overflow-wrap: break-word;
 }
 .DiaryPage .diary_content_wrapper p {
   padding: 20px;
