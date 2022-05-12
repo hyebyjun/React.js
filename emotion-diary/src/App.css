@@ -275,7 +275,7 @@ header .head_btn_right {
 }
 .DiaryPage section {
   width: 100%;
-  margin-bottom: 100px;
+  margin-bottom: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
