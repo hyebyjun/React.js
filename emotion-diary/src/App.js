@@ -121,6 +121,7 @@ function App() {
               <Route path='/new' element={<New />} />
               <Route path='/edit/:id' element={<Edit />} />
               <Route path='/diary/:id' element={<Diary />} />
+              {/* <Route path='/diary' element={<Home />} /> */}
             </Routes>
           </div>
         </BrowserRouter>
