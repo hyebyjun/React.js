@@ -61,8 +61,8 @@ body {
 }
 
 .MyButton_negative {
-  background-color: #fd8446;
-  color: #000000;
+  background-color: #fd565f;
+  color: #fff;
 }
 
 /* Header */
@@ -175,6 +175,12 @@ header .head_btn_right {
 
 .DiaryItem .btn_wrapper {
   min-width: 70px;
+  /* border: 1px solid red; */
+}
+
+.DiaryItem button {
+  /* border: 1px solid blue; */
+  margin: 20px 0;
 }
 
 /* Diary Editor */
@@ -330,5 +336,5 @@ header .head_btn_right {
 .DiaryPage .diary_content_wrapper p {
   padding: 20px;
   text-align: left;
-  line-height: 2.5; /*줄 간격 나중에 수정*/
+  line-height: 2.0; /*줄 간격 나중에 수정*/
 }

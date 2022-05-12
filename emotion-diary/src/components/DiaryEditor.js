@@ -4,7 +4,7 @@ import { DiaryDispatchContext } from './../App.js';
 import MyHeader from './MyHeader';
 import MyButton from './MyButton';
 import EmotionItem from './EmotionItem';
-import emotionList from '../util/emotion'
+import emotionList from '../util/emotion';
 
 // const env = process.env;
 // env.PUBLIC_URL = env.PUBLIC_URL || '';
@@ -49,7 +49,7 @@ const DiaryEditor = ({ isEdit, originData }) => {
   const navigate = useNavigate();
 
   // [2] 아래 handleSubmit을 위한.. onCreate땡겨오기
-  const { onCreate, onEdit } = useContext(DiaryDispatchContext);
+  const { onCreate, onEdit, onRemove } = useContext(DiaryDispatchContext);
 
   const handleClickEmote = (emotion) => {
     setEmotion(emotion);
@@ -77,6 +77,13 @@ const DiaryEditor = ({ isEdit, originData }) => {
     navigate('/', { replace: true }); // [3] 그냥 돌아가기 말고, 뒤로 가기를 못하게? ??
   };
 
+  const handleRemove = () => {
+    if (window.confirm('정말 삭제하시겠습니까?')) {
+      onRemove(originData.id);
+      navigate('/', { replace: true });
+    }
+  };
+
   useEffect(() => {
     if (isEdit) {
       // Edit.js로부터 받아온 isEdit={true}면,
@@ -93,6 +100,11 @@ const DiaryEditor = ({ isEdit, originData }) => {
         headText={isEdit ? '일기 수정' : '새로운 일기'}
         // headText={isEdit ? originData.id+'번 일기 수정하기' : '새로운 일기'}
         leftChild={<MyButton text={'<'} onClick={() => navigate(-1)} />}
+        rightChild={
+          isEdit && (
+            <MyButton text={'삭제'} type={'negative'} onClick={handleRemove} />
+          )
+        }
       />
       <div>
         <section>

@@ -28,7 +28,7 @@ const Edit = () => {
       if (targetDiary) {
         setOriginData(targetDiary);
       } else {
-        alert('존재하지 않는 게시글입니다.')
+        alert('존재하지 않는 게시글입니다.');
         navigate('/', { replace: true });
         // 없는 id로 접근 시, 메인으로 보내버리기
         // + 거기서 뒤로가기 눌러도 잘못된 접근 시도 페이지로 못 가게 막음

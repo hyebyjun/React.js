@@ -33,36 +33,59 @@ const reducer = (state, action) => {
     default:
       return state;
   }
-  localStorage.setItem('diary', JSON.stringify(newState));
-  // 새로운 액션 시 모든 변경값을 로컬 스토리지 저장하기
   return newState;
 };
 
 export const DiaryStateContext = React.createContext();
 export const DiaryDispatchContext = React.createContext();
 
+const dummyData = [
+  {
+    id: 1,
+    emotion: 1,
+    content:
+      '이 편지는 영국에서 최초로 시작되어 일 년에 한바퀴를 돌면서 받는 사람에게 행운을 주었고 지금은 당신에게로 옮겨진 이 편지는 4일 안에 당신 곁을 떠나야합니다.',
+    date: 1652054400000,
+  },
+  {
+    id: 2,
+    emotion: 2,
+    content:
+      '이 편지를 포함해서 7통을 행운이 필요한 사람에게 보내주셔야 합니다. 복사를 해도 좋습니다. 혹 미신이라 하실지 모르지만 사실입니다.',
+    date: 1652054400000,
+  },
+  {
+    id: 3,
+    emotion: 3,
+    content:
+      '영국에서 HGXWCH이라는 사람은 1930년에 이 편지를 받았습니다. 그는 비서에게 편지를 복사해서 보내라고 했습니다. 며칠 뒤에 복권이 당첨되어 20억을 받았습니다.',
+    date: 1652054400000,
+  },
+  {
+    id: 4,
+    emotion: 4,
+    content:
+      '어떤 이는 이 편지를 받았으나 96시간 이내 자신의 손에서 떠나야 한다는 사실을 잊었습니다. 그는 곧 사직되었습니다. 나중에야 이 사실을 알고 7통의 편지를 보냈는데 다시 좋은 직장을 얻었습니다.',
+    date: 1652054400000,
+  },
+  {
+    id: 5,
+    emotion: 5,
+    content:
+      '미국의 케네디 대통령은 이 편지를 받았지만 그냥 버렸습니다. 결국 9일 후 그는 암살당했습니다. 기억해 주세요. 이 편지를 보내면 7년의 행운이 있을 것이고 그렇지 않으면 3년의 불행이 있을 것입니다. 그리고 이 편지를 버리거나 낙서를 해서는 절대로 안됩니다. 7통입니다. 이 편지를 받은 사람은 행운이 깃들 것입니다. 힘들겠지만 좋은 게 좋다고 생각하세요. 7년의 행운을 빌면서...',
+    date: 1652054400000,
+  },
+];
+
 function App() {
-  const [data, dispatch] = useReducer(reducer, []);
-  // 원래 초기값 data였던 dummy를 삭제하고 빈 배열로 시작.
-
-  // 새로고침 후에도 로컬로부터 아이템 렌더 갖고오기 구현 필요
+  
   useEffect(() => {
-    const localData = localStorage.getItem('diary');
-    if (localData) {
-      const diaryList = JSON.parse(localData).sort(
-        (a, b) => parseInt(b.id) - parseInt(a.id)
-      );
-      // 가장 최근 아이디에서 +1 하는 현재아이디 만들기
-      // 제일 쉬운 방법은 52번 코드를 통해 정렬해두기
-      dataId.current = parseInt(diaryList[0].id) + 1;
-      // 그리고 정렬된 첫번째 값에서 + 1 하면 최단경로?ㅎ
-
-      // console.log(diaryList);
-      // console.log(dataId);
-
-      dispatch({ type: 'INIT', data: diaryList });
-    }
+    localStorage.setItem('obj', JSON.stringify({ value: 30 }));
   }, []);
+
+  const [data, dispatch] = useReducer(reducer, dummyData);
+  // useReducer(콜백함수, 기본값)
+  // console.log(new Date().getTime()); 더미데이터 체크용
 
   const dataId = useRef(0);
 
@@ -108,7 +131,7 @@ function App() {
               <Route path='/new' element={<New />} />
               <Route path='/edit/:id' element={<Edit />} />
               <Route path='/diary/:id' element={<Diary />} />
-              <Route path='/diary' element={<Home />} />
+              {/* <Route path='/diary' element={<Home />} /> */}
             </Routes>
           </div>
         </BrowserRouter>
