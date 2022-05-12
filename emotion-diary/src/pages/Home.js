@@ -11,7 +11,7 @@ const Home = () => {
 
   const [data, setData] = useState([]);
   const [curDate, setCurDate] = useState(new Date());
-  const headText = `${curDate.getFullYear()}년 ${curDate.getMonth() + 1}월`; // 희한하게도 js의 getMonth는 0월부터 시작..ㅎ
+  const headText = `${curDate.getFullYear()}년 👾 ${curDate.getMonth() + 1}월`; // 희한하게도 js의 getMonth는 0월부터 시작..ㅎ
 
   // 화면에 출력될 때 변경되는 옵션 : 날짜? 월이 달라질 수 있음
   // 월이 변경되면 나오는 데일리 리스트가 달라지도록

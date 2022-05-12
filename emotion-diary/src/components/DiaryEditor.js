@@ -63,7 +63,7 @@ const DiaryEditor = ({ isEdit, originData }) => {
 
     if (
       window.confirm(
-        isEdit ? '일기를 수정하시겠습니까?' : '새로운 일기를 작성하나요?'
+        isEdit ? '일기를 수정하시겠습니까?' : '일기를 등록하시겠습니까?'
       )
     ) {
       if (!isEdit) {
@@ -97,18 +97,18 @@ const DiaryEditor = ({ isEdit, originData }) => {
   return (
     <div className='DiaryEditor'>
       <MyHeader
-        headText={isEdit ? '일기 수정' : '새로운 일기'}
+        headText={isEdit ? 'E d i t . D i a r y' : 'N e w . D i a r y 🍕'}
         // headText={isEdit ? originData.id+'번 일기 수정하기' : '새로운 일기'}
         leftChild={<MyButton text={'<'} onClick={() => navigate(-1)} />}
         rightChild={
           isEdit && (
-            <MyButton text={'삭제'} type={'negative'} onClick={handleRemove} />
+            <MyButton text={'Del'} type={'negative'} onClick={handleRemove} />
           )
         }
       />
       <div>
         <section>
-          <h4>오늘은 며칠인가요?</h4>
+          <h4>오늘은 며칠인가요? 📆</h4>
           <div className='input_box'>
             <input
               className='input_date'
@@ -121,7 +121,7 @@ const DiaryEditor = ({ isEdit, originData }) => {
           </div>
         </section>
         <section>
-          <h4>오늘의 감정</h4>
+          <h4>오늘의 감정 😎</h4>
           <div className='input_box emotion_list_wrapper'>
             {emotionList.map((it) => (
               // <div key={it.emotion_id}>{it.emotion_descript}</div>
@@ -135,7 +135,7 @@ const DiaryEditor = ({ isEdit, originData }) => {
           </div>
         </section>
         <section>
-          <h4>오늘의 일기</h4>
+          <h4>오늘의 기록 📝</h4>
           <div className='input_box text_wrapper'>
             <textarea
               ref={contentRef}
@@ -148,12 +148,12 @@ const DiaryEditor = ({ isEdit, originData }) => {
         <section>
           <div className='control_box'>
             <MyButton
-              text={'취소'}
+              text={'Cancel'}
               onClick={() => {
                 navigate(-1);
               }}
             />
-            <MyButton text={'등록'} type={'positive'} onClick={handleSubmit} />
+            <MyButton text={'Submit'} type={'positive'} onClick={handleSubmit} />
           </div>
         </section>
       </div>

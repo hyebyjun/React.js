@@ -54,8 +54,11 @@ function App() {
       );
       // 가장 최근 아이디에서 +1 하는 현재아이디 만들기
       // 제일 쉬운 방법은 52번 코드를 통해 정렬해두기
-      dataId.current = parseInt(diaryList[0].id) + 1;
-      // 그리고 정렬된 첫번째 값에서 + 1 하면 최단경로?ㅎ
+
+      if (diaryList.length >= 1) { // 빈 배열일 때 0번 인덱스 접근할 수 없으니 오류 방지 조건문
+        dataId.current = parseInt(diaryList[0].id) + 1;
+        // 그리고 정렬된 첫번째 값에서 + 1 하면 최단경로?ㅎ
+      }
 
       // console.log(diaryList);
       // console.log(dataId);

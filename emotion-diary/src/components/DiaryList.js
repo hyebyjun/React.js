@@ -89,7 +89,7 @@ const DiaryList = ({ diaryList }) => {
         <div className='right_col'>
           <MyButton
             type={'positive'}
-            text={'일기 쓰기'}
+            text={'새 🌱 일기'}
             onClick={() => navigate('/new')}
           />
         </div>

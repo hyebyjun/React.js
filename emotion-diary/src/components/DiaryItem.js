@@ -41,7 +41,7 @@ const DiaryItem = ({ id, emotion, content, date }) => {
         </div>
       </div>
       <div className='btn_wrapper'>
-        <MyButton text={'수정'} onClick={goEdit} />
+        <MyButton text={'Edit'} onClick={goEdit} />
       </div>
     </div>
   );
