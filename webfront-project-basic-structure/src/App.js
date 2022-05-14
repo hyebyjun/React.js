@@ -62,9 +62,12 @@ function App() {
       <Route path='/boardlist' element={<BoardList boardList={data} />} />
       <Route
         path='/boardeditor'
-        element={<BoardEditor onCreate={onCreate} boardList={data}/>}
+        element={<BoardEditor onCreate={onCreate} boardList={data} />}
       />
-      <Route path='/boarddetail/:id' element={<BoardDetail />} />
+      <Route
+        path='/boarddetail/:id'
+        element={<BoardDetail boardList={data} />}
+      />
     </Routes>
   );
 }
