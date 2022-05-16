@@ -9,11 +9,11 @@ import BoardEditor from './pages/BoardEditor';
 import BoardDetail from './pages/BoardDetail';
 
 function App() {
-  // 불러온 데이터든 작성한 데이터든 담길 state
+  // 불러온 데이터든 작성한 데이터든 담길 state 배열
   const [data, setData] = useState([]);
   const dataId = useRef(0);
 
-  // 테스트용 json 데이터 가져오기
+  // 테스트용 json 데이터 가져오는 함수
   const getData = async () => {
     const res = await fetch(
       'https://jsonplaceholder.typicode.com/comments'
@@ -33,6 +33,7 @@ function App() {
     console.log(initData);
   };
 
+  // 실제 json 갖고오는 함수 실행하는 코드
   useEffect(() => {
     getData();
   }, []);
