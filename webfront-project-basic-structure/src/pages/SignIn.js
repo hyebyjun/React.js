@@ -57,7 +57,7 @@ const SignInPage = () => {
             }}
           />
         </div>
-        <MyButton onClick={handleSubmit} text={'Sign In'}/>
+        <MyButton onClick={handleSubmit} text={'Sign In'} />
       </div>
     </>
   );
