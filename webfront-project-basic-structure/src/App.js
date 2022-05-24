@@ -11,7 +11,7 @@ import BoardDetail from './pages/BoardDetail';
 function App() {
   // 불러온 데이터든 작성한 데이터든 담길 state 배열
   const [data, setData] = useState([]);
-  const dataId = useRef(0);
+  const dataId = useRef(1);
 
   // 테스트용 json 데이터 가져오는 함수
   const getData = async () => {

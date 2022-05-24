@@ -1,5 +1,4 @@
 import FixedHeader from '../components/common/FixedHeader';
-import BoardItem from '../components/common/BoardItem';
 import MyButton from '../components/common/MyButton';
 import { useNavigate } from 'react-router-dom';
 
@@ -53,7 +52,7 @@ const BoardList = ({ boardList }) => {
               <td>{new Date(it.created_date).toLocaleString()}</td>
             </tr>
           ))}
-          
+          {/* 여기 끝에 리버스 달면.. 새글 생성해도 꼬다리 뒤집힘.. */}
         </table>
       </div>
     </>

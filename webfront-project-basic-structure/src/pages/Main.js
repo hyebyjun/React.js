@@ -22,7 +22,7 @@ const Main = () => {
             <h2 style={contentStyle}>프롭스를 어케..</h2>
           </div>
           <div>
-            <h1 style={contentStyle}>많이 때려박으려면</h1>
+            <h1 style={contentStyle}>많이 넣으려면</h1>
           </div>
           <div>
             <h2 style={contentStyle}>어케해야하지......</h2>
