@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 h4 {
-  width: 1000px;
+  width: 900px;
   height: 36px;
   color: #333;
   font-size: 20px;
@@ -17,7 +17,7 @@ h4 > span {
 
 /* 필수 입력 테이블 */
 .fieldset_class {
-  width: 1000px;
+  width: 900px;
   font-size: 14px;
   margin: 100px auto;
   border-top: 1px solid rgb(209, 209, 209);
@@ -50,7 +50,7 @@ h4 > span {
   padding-left: 25px;
 }
 .fieldset_class dl dd {
-  width: 800px;
+  width: 700px;
   float: left;
   box-sizing: border-box;
   background: #fff;
@@ -351,12 +351,12 @@ input[type='checkbox']:not(old):checked + label {
   height: 30px;
 }
 #join_address_dl dd > input:nth-child(5) {
-  width: 755px;
+  width: 600px;
   height: 30px;
   margin-top: 5px;
 }
 #join_address_dl dd > input:nth-child(6) {
-  width: 755px;
+  width: 600px;
   height: 30px;
   margin-top: 5px;
 }
