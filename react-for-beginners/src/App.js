@@ -1,20 +1,30 @@
-import { useEffect, useState } from 'react';
-
-const Hello = () => {
-  useEffect(() => {
-    console.log('created :)');
-    return () => console.log('destoryed :('); // 언마운트 때 실행되는 함수
-  }, []);
-  return <h1>Hello</h1>;
-};
+import { useState } from 'react';
 
 function App() {
-  const [showing, setShowing] = useState(false);
-  const onClick = () => setShowing((prev) => !prev);
+  const [toDo, setToDo] = useState('');
+  const [toDos, setToDos] = useState([]);
+  const onChange = (e) => setToDo(e.target.value);
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (toDo === '') {
+      return;
+    }
+    setToDos((currentArray) => [toDo, ...currentArray]);
+    setToDo('');
+  };
+  console.log(toDos);
   return (
     <div>
-      {showing ? <Hello /> : null}
-      <button onClick={onClick}>{showing ? 'Hide' : 'Show'}</button>
+      <form onSubmit={onSubmit}>
+        {/* form은 기본적으로 submit 이벤트를 갖고있음 */}
+        <input
+          onChange={onChange}
+          value={toDo}
+          type='text'
+          placeholder='Wirte your to do...'
+        />
+        <button>Add To Do</button>
+      </form>
     </div>
   );
 }
