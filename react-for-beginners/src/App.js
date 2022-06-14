@@ -15,6 +15,7 @@ function App() {
   console.log(toDos);
   return (
     <div>
+      <h1>My To Dos {toDos.length}</h1>
       <form onSubmit={onSubmit}>
         {/* form은 기본적으로 submit 이벤트를 갖고있음 */}
         <input
@@ -25,6 +26,10 @@ function App() {
         />
         <button>Add To Do</button>
       </form>
+      <hr />
+      {toDos.map((it, idx) => (
+        <li key={idx}>{it.toUpperCase()}</li>
+      ))}
     </div>
   );
 }
