@@ -7,9 +7,8 @@ function Movie({ id, coverImg, title, year, summary, genres }) {
       <img src={coverImg} alt={title} />
       <div className='movie__data'>
         <h3 className='movie__title'>
-          <Link to={`/movie/${id}`}>{title}</Link>
+          <Link to={`/movie/${id}`}>{title} ({year})</Link>
         </h3>
-        <h5 className='movie__year'>{year}</h5>
         <p className='movie__summary'>{summary.slice(0, 140)} ...</p>
         <ul className='genres'>
           {genres.map((g, idx) => (
