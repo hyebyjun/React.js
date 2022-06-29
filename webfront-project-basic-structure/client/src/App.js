@@ -42,11 +42,11 @@ function App() {
   const onCreate = (author, content, title) => {
     const created_date = new Date().getTime();
     const newItem = {
+      id: dataId.current,
+      title,
       author,
       content,
-      title,
       created_date,
-      id: dataId.current,
     };
     dataId.current += 1;
 

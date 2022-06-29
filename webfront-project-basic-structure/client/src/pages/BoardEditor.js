@@ -36,12 +36,12 @@ const BoardEditor = ({ onCreate, boardList }) => {
     onCreate(state.author, state.content, state.title);
     console.log(state);
     alert('게시글이 등록되었습니다.');
-    // navigate('/boardlist');
-    setState({
-      author: '',
-      title: '',
-      content: '',
-    });
+    navigate('/boardlist');
+    // setState({
+    //   author: '',
+    //   title: '',
+    //   content: '',
+    // });
     console.log({boardList});
   };
 
@@ -107,7 +107,7 @@ const BoardEditor = ({ onCreate, boardList }) => {
         </table>
         <div className='BoardBottom'>
           <MyButton onClick={handleSubmit} text={'게시'} />
-          <MyButton onClick={() => navigate('/boardlist')} text={'취소'} />
+          <MyButton onClick={()=>navigate('/boardlist')} text={'취소'} />
           {/* <MyButton onClick={navigate('/boardlist')} text={'취소'} /> */}
         </div>
       </div>
