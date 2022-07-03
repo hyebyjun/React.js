@@ -1,15 +1,11 @@
 import Todo from './components/Todo';
-import Modal from './components/Modal';
-import Backdrop from './components/Backdrop';
 
 function App() {
   return (
     <div>
       <h1>My Todos</h1>
-      <Todo text='dkdk' />
-      <Todo text='hohoba' />
-      <Modal />
-      <Backdrop />
+      <Todo text='task 1' />
+      <Todo text='task 2' />
     </div>
   );
 }
