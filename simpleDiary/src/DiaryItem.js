@@ -39,7 +39,7 @@ const DiaryItem = ({ id, author, content, emotion, created_date }) => {
     <div className='DiaryItem'>
       <div className='info'>
         <span>
-          « 작성자 : {author} 🍟 오늘의 점수 : {emotion} »
+          « 작성자 : {author} 🍟 오늘의 점수 : {'⭐'.repeat(emotion)} »
         </span>
         <br />
         <span className='date'>{new Date(created_date).toLocaleString()}</span>

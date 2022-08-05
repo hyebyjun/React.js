@@ -100,11 +100,11 @@ const DiaryEditor = () => { // <-- onCreate 컴포넌트로 안 받으니까 지
           value={state.emotion}
           onChange={handleChangeState}
         >
-          <option value={1}>1</option>
-          <option value={2}>2</option>
-          <option value={3}>3</option>
-          <option value={4}>4</option>
-          <option value={5}>5</option>
+          <option value={1}>⭐</option>
+          <option value={2}>⭐⭐</option>
+          <option value={3}>⭐⭐⭐</option>
+          <option value={4}>⭐⭐⭐⭐</option>
+          <option value={5}>⭐⭐⭐⭐⭐</option>
         </select>
       </div>
       <div>
